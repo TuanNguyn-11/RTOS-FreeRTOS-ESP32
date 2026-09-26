@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="myimage">
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/logo_eee.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/B_Tagline - HCM-UTE - 1.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/B_Tagline - HCM-UTE - 2.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/Logo HCM-UTE_ 1.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/Logo HCM-UTE_2.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/Logo HCM-UTE_4.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/W_Tagline - HCM-UTE - 1.png</file>
+    <file>1. Logo HCM-UTE-20260306T034258Z-3-001/1. Logo HCM-UTE/W_Tagline - HCM-UTE - 2.png</file>
+  </qresource>
+</RCC>
