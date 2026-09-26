@@ -176,7 +176,7 @@ pio run --target upload
 ## 👥 Thành viên nhóm
 
 > Nhóm 1 — Đợt 1 — HK2 năm học 2025–2026
-> Phan Ngọc Tuấn Nguyên 23119178
+> **Phan Ngọc Tuấn Nguyên 23119178**
 > Nguyễn Trọng Nhân 23119182
 > Hà Quang Minh 23119169
 > Phạm Trọng An Nam 23119174
