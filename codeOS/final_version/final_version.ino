@@ -7,14 +7,14 @@
 #include <Firebase_ESP_Client.h>
 
 /* WIFI + FIREBASE */
-#define WIFI_SSID "NhanEnten"
-#define WIFI_PASSWORD "Nhan2311"
+#define WIFI_SSID "YOUR_WIFI_SSID"
+#define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
 
-#define USER_EMAIL "test@test.com"
-#define USER_PASSWORD "123456"
+#define USER_EMAIL "YOUR_FIREBASE_USER_EMAIL"
+#define USER_PASSWORD "YOUR_FIREBASE_USER_PASSWORD"
 
-#define API_KEY "AIzaSyC8vcxpJBbG1PRFnk_GTd8KETXxrCuW-JU"
-#define FIREBASE_PROJECT_ID "my-project-rtos"
+#define API_KEY "YOUR_FIREBASE_WEB_API_KEY"
+#define FIREBASE_PROJECT_ID "YOUR_FIREBASE_PROJECT_ID"
 
 FirebaseData fbdo;
 FirebaseAuth auth;

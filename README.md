@@ -40,7 +40,7 @@ RTOS_git/
 │       ├── image.py                # Resource ảnh (compiled)
 │       ├── image.qrc               # Qt resource file
 │       ├── icon.png                # Icon ứng dụng
-│       └── my-project-rtos-firebase-adminsdk-*.json  # Firebase credential
+│       └── (*-firebase-adminsdk-*.json)  # Credential — KHÔNG có trong repo, tự tải từ Firebase Console
 │
 └── codeNonOS/                      # Phiên bản Non-OS (6 task)
     └── Non-OS/
@@ -76,6 +76,24 @@ Tất cả các task chạy **liên tục, không dừng**, được lập lịc
 | `xQueueCreate()` | `msgQueue` — lưu 5 data string nhận từ Firebase |
 | `xTaskCreatePinnedToCore()` | Tất cả task được pin vào Core 1 |
 | `vTaskDelay()` | Sleep task, nhường CPU cho task khác (khác với `delay()` — block toàn bộ CPU) |
+
+#### Cấu hình task (trích từ `setup()` trong `final_version.ino`)
+
+Code tạo **9 task FreeRTOS**: chức năng Task 7 được tách thành `BTN3` (bắt nút, give `semSend`) và `Send` (gửi Firestore).
+
+| Task (tên trong code) | Stack (bytes) | Priority | Core |
+|---|---|---|---|
+| `LED1` | 2048 | 1 | 1 |
+| `MPU` | 4096 | 1 | 1 |
+| `BTN1` | 2048 | 2 | 1 |
+| `BTN2` | 2048 | 1 | 1 |
+| `BTN3` | 2048 | 1 | 1 |
+| `LED3` | 2048 | 1 | 1 |
+| `OLED` | 4096 | 1 | 1 |
+| `Send` | 8192 | 1 | 1 |
+| `Recv` | 8192 | 1 | 1 |
+
+`msgQueue` có độ dài 5, mỗi phần tử là con trỏ `String*`.
 
 ### 🟢 Phiên bản Non-OS (6 Task)
 
@@ -114,6 +132,8 @@ cd codeOS/QT
 python window.py
 ```
 
+> Cần tự tải file service account JSON từ Firebase Console (Project settings → Service accounts) vào `codeOS/QT/` và sửa `json_path` trong `window.py` cho đúng tên file. File `*.json` đã bị chặn bởi `.gitignore`.
+
 ---
 
 ## 🔧 Hướng dẫn cài đặt & chạy
@@ -127,7 +147,8 @@ python window.py
    - `MPU6050_tockn`
    - `Firebase ESP Client`
 3. Mở `codeOS/final_version/final_version.ino`
-4. Cấu hình WiFi và Firebase trong code (thay SSID, password, API key)
+4. Điền thông tin của bạn vào các macro ở đầu file: `WIFI_SSID`, `WIFI_PASSWORD`, `USER_EMAIL`, `USER_PASSWORD`, `API_KEY`, `FIREBASE_PROJECT_ID`.
+   Không commit thông tin thật lên GitHub.
 5. Upload lên ESP32
 
 ### Phiên bản Non-OS (PlatformIO)
