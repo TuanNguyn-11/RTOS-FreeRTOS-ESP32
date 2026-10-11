@@ -13,7 +13,7 @@ Xây dựng hệ thống đa tác vụ trên ESP32 theo **2 phiên bản**:
 
 | Phiên bản | Số Task | Mô tả |
 |-----------|---------|-------|
-| **OS (FreeRTOS)** | 8 task | Sử dụng FreeRTOS với Semaphore, Queue, đa tác vụ thực sự |
+| **OS (FreeRTOS)** | 9 task (8 chức năng) | Sử dụng FreeRTOS với Semaphore, Queue, đa tác vụ thực sự |
 | **Non-OS** | 6 task | Không dùng OS, dùng `millis()` để giả lập đa nhiệm trong `loop()` |
 
 ### Phần cứng sử dụng
@@ -31,7 +31,7 @@ Xây dựng hệ thống đa tác vụ trên ESP32 theo **2 phiên bản**:
 ```
 RTOS_git/
 ├── README.md
-├── codeOS/                         # Phiên bản FreeRTOS (8 task)
+├── codeOS/                         # Phiên bản FreeRTOS (9 task)
 │   ├── final_version/
 │   │   └── final_version.ino       # Code chính ESP32 (Arduino IDE)
 │   └── QT/
@@ -53,7 +53,7 @@ RTOS_git/
 
 ## ⚡ Chi tiết các Task
 
-### 🔵 Phiên bản OS — FreeRTOS (8 Task)
+### 🔵 Phiên bản OS — FreeRTOS (9 Task, 8 chức năng)
 
 Tất cả các task chạy **liên tục, không dừng**, được lập lịch bởi FreeRTOS scheduler trên **1 lõi CPU** (Core 1).
 
@@ -65,7 +65,7 @@ Tất cả các task chạy **liên tục, không dừng**, được lập lịc
 | **Task 4** | BTN2 → Give Semaphore | Nhấn BTN2 cấp `BinarySemaphore` cho Task 5 |
 | **Task 5** | Take Semaphore → LED3 | Đợi nhận semaphore, bật LED3 sáng 3 giây rồi tắt |
 | **Task 6** | Hiển thị OLED | Hiển thị trạng thái LED2 (ON/OFF), giá trị MPU, LED3 countdown (500ms/lần) |
-| **Task 7** | Gửi data lên Firebase | Nhấn BTN3 → gửi `led2State`, `mpuAngleX`, `led3Countdown` lên Firestore |
+| **Task 7** (`BTN3` + `Send`) | Gửi data lên Firebase | Nhấn BTN3 → gửi `led2State`, `mpuAngleX`, `led3Countdown` lên Firestore |
 | **Task 8** | Nhận data từ Firebase | Sau khi Task 7 gửi xong → nhận 5 data từ server, hiển thị "Downloading", "Done", rồi list 5 data lên OLED |
 
 #### Cơ chế RTOS sử dụng
